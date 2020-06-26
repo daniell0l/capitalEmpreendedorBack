@@ -1,0 +1,99 @@
+{
+  "users": {
+    "cliente1@example.com": {
+      "name": "Cliente 1",
+      "email": "cliente1@example.com",
+      "isActive": true,
+      "phone": "(19) 99999-9999",
+      "revenue": 1000000,
+      "agreedTerms": true
+    },
+    "cliente2@example.com": {
+      "name": "Cliente 2",
+      "email": "cliente2@example.com",
+      "isActive": true,
+      "phone": "(19) 91111-1111",
+      "revenue": 550000,
+      "agreedTerms": false
+    },
+    "cliente3@example.com": {
+      "name": "Cliente 3",
+      "email": "cliente3@example.com",
+      "isActive": true,
+      "phone": "(11) 92222-2222",
+      "revenue": 150000,
+      "agreedTerms": true
+    },
+    "cliente4@example.com": {
+      "name": "Cliente 4",
+      "email": "cliente4@example.com",
+      "isActive": false,
+      "phone": "(19) 99999-3333",
+      "revenue": 10000000,
+      "agreedTerms": true
+    },
+    "cliente5@example.com": {
+      "name": "Cliente 5",
+      "email": "cliente5@example.com",
+      "isActive": true,
+      "phone": "(19) 99999-4444",
+      "revenue": 350000,
+      "agreedTerms": false
+    }
+  },
+  "opportunities": {
+    "cliente1@example.com": [
+      {
+        "name": "Institution 1",
+        "limit": 50000,
+        "interest": 0.045,
+        "term": 60,
+        "isActive": true
+      },{
+        "name": "Instituição 3",
+        "limit": 100000,
+        "interest": 0.035,
+        "term": 24,
+        "isActive": true
+      }
+    ],
+    "cliente2@example.com": [],
+    "cliente3@example.com": [
+      {
+        "name": "Instituição 2",
+        "limit": 30000,
+        "interest": 0.05,
+        "term": 36,
+        "isActive": true
+      },{
+        "name": "Instituição 3",
+        "limit": 75000,
+        "interest": 0.053,
+        "term": 48,
+        "isActive": false
+      }
+    ],
+    "cliente4@example.com": [
+      {
+        "name": "Instituição 1",
+        "limit": 5000000,
+        "interest": 0.047,
+        "term": 60,
+        "isActive": true      
+      },{
+        "name": "Instituição 2",
+        "limit": 2000000,
+        "interest": 0.04,
+        "term": 36,
+        "isActive": true
+      },{
+        "name": "Instituição 3",
+        "limit": 500000,
+        "interest": 0.025,
+        "term": 24,
+        "isActive": false
+      }
+    ],
+    "cliente5@example.com": []
+  }
+}
