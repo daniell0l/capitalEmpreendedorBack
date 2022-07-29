@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { readFileSync, writeFileSync } from 'fs';
 
 var functions = {};
 const databaseFile = 'database/data.json';
@@ -9,7 +9,7 @@ functions.getAll = (collection) => {
       reject("Missing or incorrect parameter collection")
     } else {
       try {
-        var data = JSON.parse(fs.readFileSync(databaseFile));
+        var data = JSON.parse(readFileSync(databaseFile));
         if(data[collection]) {
           resolve(data[collection]);
         } else {
@@ -30,7 +30,7 @@ functions.getOne = (collection, key) => {
       reject("Missing or incorrect parameter key")
     } else {
       try {
-        var data = JSON.parse(fs.readFileSync(databaseFile));
+        var data = JSON.parse(readFileSync(databaseFile));
         if(data[collection]){
           if(data[collection][key]) {
             resolve(data[collection][key]);
@@ -57,9 +57,9 @@ functions.set = (collection, key, value) => {
       reject("Missing or incorrect parameter data")
     } else {
       try {
-        var data = JSON.parse(fs.readFileSync(databaseFile));
+        var data = JSON.parse(readFileSync(databaseFile));
         data[collection][key] = { ...value };
-        fs.writeFileSync(databaseFile, JSON.stringify(data, null, 2));
+        writeFileSync(databaseFile, JSON.stringify(data, null, 2));
         resolve(data[collection][key]);
       } catch(err) {
         reject(err);
@@ -78,9 +78,9 @@ functions.update = (collection, key, value) => {
       reject("Missing or incorrect parameter data")
     } else {
       try {
-        var data = JSON.parse(fs.readFileSync(databaseFile));
+        var data = JSON.parse(readFileSync(databaseFile));
         data[collection][key] = { ...data[collection][key], ...value };
-        fs.writeFileSync(databaseFile, JSON.stringify(data, null, 2));
+        writeFileSync(databaseFile, JSON.stringify(data, null, 2));
         resolve(data[collection][key]);
       } catch(err) {
         reject(err);
@@ -97,10 +97,10 @@ functions.delete = (collection, key) => {
       reject("Missing or incorrect parameter key")
     } else {
       try {
-        var data = JSON.parse(fs.readFileSync(databaseFile));
+        var data = JSON.parse(readFileSync(databaseFile));
         if(data[collection]){
           data[collection][key] = undefined;
-          fs.writeFileSync(databaseFile, JSON.stringify(data, null, 2));
+          writeFileSync(databaseFile, JSON.stringify(data, null, 2));
           resolve();
         } else {
           resolve(); 
@@ -112,4 +112,4 @@ functions.delete = (collection, key) => {
   });
 }
 
-module.exports = functions;
+export default functions;

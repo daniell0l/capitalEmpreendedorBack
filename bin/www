@@ -1,9 +1,12 @@
 #!/usr/bin/env node
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 
 /**
  * Module dependencies.
  */
 
+// eslint-disable-next-line no-undef
 var app = require('../app');
 var debug = require('debug')('ps-dev:server');
 var http = require('http');
