@@ -1,15 +1,15 @@
 import { readFileSync, writeFileSync } from 'fs';
 
-var functions = {};
+const functions = {};
 const databaseFile = 'database/data.json';
 
-functions.getAll = (collection) => {
+functions.getAll = (collection: string | number) => {
   return new Promise((resolve, reject) => {
     if(!collection || typeof collection !== 'string') {
       reject("Missing or incorrect parameter collection")
     } else {
       try {
-        var data = JSON.parse(readFileSync(databaseFile));
+        const data = JSON.parse(readFileSync(databaseFile));
         if(data[collection]) {
           resolve(data[collection]);
         } else {
@@ -22,7 +22,7 @@ functions.getAll = (collection) => {
   })
 }
 
-functions.getOne = (collection, key) => {
+functions.getOne = (collection: string | number, key: string | number) => {
   return new Promise((resolve, reject) => {
     if(!collection || typeof collection !== 'string') {
       reject("Missing or incorrect parameter collection")
@@ -30,7 +30,7 @@ functions.getOne = (collection, key) => {
       reject("Missing or incorrect parameter key")
     } else {
       try {
-        var data = JSON.parse(readFileSync(databaseFile));
+        const data = JSON.parse(readFileSync(databaseFile));
         if(data[collection]){
           if(data[collection][key]) {
             resolve(data[collection][key]);
@@ -47,7 +47,7 @@ functions.getOne = (collection, key) => {
   });
 }
 
-functions.set = (collection, key, value) => {
+functions.set = (collection: string | number, key: string | number, value: any) => {
   return new Promise((resolve, reject) => {
     if(!collection || typeof collection !== 'string') {
       reject("Missing or incorrect parameter collection")
@@ -57,7 +57,7 @@ functions.set = (collection, key, value) => {
       reject("Missing or incorrect parameter data")
     } else {
       try {
-        var data = JSON.parse(readFileSync(databaseFile));
+        const data = JSON.parse(readFileSync(databaseFile));
         data[collection][key] = { ...value };
         writeFileSync(databaseFile, JSON.stringify(data, null, 2));
         resolve(data[collection][key]);
@@ -68,7 +68,7 @@ functions.set = (collection, key, value) => {
   });
 }
 
-functions.update = (collection, key, value) => {
+functions.update = (collection: string | number, key: string | number, value: any) => {
   return new Promise((resolve, reject) => {
     if(!collection || typeof collection !== 'string') {
       reject("Missing or incorrect parameter collection")
@@ -78,7 +78,7 @@ functions.update = (collection, key, value) => {
       reject("Missing or incorrect parameter data")
     } else {
       try {
-        var data = JSON.parse(readFileSync(databaseFile));
+        const data = JSON.parse(readFileSync(databaseFile));
         data[collection][key] = { ...data[collection][key], ...value };
         writeFileSync(databaseFile, JSON.stringify(data, null, 2));
         resolve(data[collection][key]);
@@ -89,15 +89,15 @@ functions.update = (collection, key, value) => {
   });
 }
 
-functions.delete = (collection, key) => {
-  return new Promise((resolve, reject) => {
+functions.delete = (collection: string | number, key: string | number) => {
+  return new Promise<void>((resolve, reject) => {
     if(!collection || typeof collection !== 'string') {
       reject("Missing or incorrect parameter collection")
     } else if(!key || typeof key !== 'string') {
       reject("Missing or incorrect parameter key")
     } else {
       try {
-        var data = JSON.parse(readFileSync(databaseFile));
+        const data = JSON.parse(readFileSync(databaseFile));
         if(data[collection]){
           data[collection][key] = undefined;
           writeFileSync(databaseFile, JSON.stringify(data, null, 2));
