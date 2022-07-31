@@ -1,21 +1,22 @@
-import  express from 'express';
+import express from "express";
 
-import * as swaggerUI from "swagger-ui-express"
-import router from './routes';
+import * as swaggerUI from "swagger-ui-express";
+import router from "./routes";
+
+import swaggerApi from "./swagger.json";
 
 const app = express();
 
 app.use(express.json());
-app.use("/api", swaggerUI.serve, swaggerUI.setup())
+app.use("/api", swaggerUI.serve, swaggerUI.setup(swaggerApi));
 
 app.get("/capital", (req, res) => {
-    return res.json({
-        message: "ok capital",
-    });
+  return res.json({
+    message:
+      "teste realizado para as rotas de manipulação da capital empreendedor",
+  });
 });
 
-
 app.use("/v1", router);
-//app.listen(3333, () => console.log("Server is running"))
 
-export default app
+export default app;

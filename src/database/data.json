@@ -50,7 +50,8 @@
           "interest": 0.045,
           "term": 60,
           "isActive": true
-        },{
+        },
+        {
           "name": "Instituição 3",
           "limit": 100000,
           "interest": 0.035,
@@ -59,7 +60,7 @@
         }
       ]
     },
-    "cliente2@example.com": { 
+    "cliente2@example.com": {
       "opportunities": []
     },
     "cliente3@example.com": {
@@ -70,7 +71,8 @@
           "interest": 0.05,
           "term": 36,
           "isActive": true
-        },{
+        },
+        {
           "name": "Instituição 3",
           "limit": 75000,
           "interest": 0.053,
@@ -86,14 +88,16 @@
           "limit": 5000000,
           "interest": 0.047,
           "term": 60,
-          "isActive": true      
-        },{
+          "isActive": true
+        },
+        {
           "name": "Instituição 2",
           "limit": 2000000,
           "interest": 0.04,
           "term": 36,
           "isActive": true
-        },{
+        },
+        {
           "name": "Instituição 3",
           "limit": 500000,
           "interest": 0.025,
