@@ -3,12 +3,12 @@ import express from "express";
 import * as swaggerUI from "swagger-ui-express";
 import router from "./routes";
 
-import swaggerApi from "./swagger.json";
+import swaggerFile from "./swagger.json";
 
 const app = express();
 
 app.use(express.json());
-app.use("/api", swaggerUI.serve, swaggerUI.setup(swaggerApi));
+app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
 app.get("/capital", (req, res) => {
   return res.json({

@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Capital Empreendedor",
+    "title": " API Capital Empreendedor",
     "descripton": "api de manipulação",
     "termsOfService": "http://localhost:3000/capital",
     "contact": {
@@ -17,14 +17,85 @@
   "paths": {
     "/users": {
       "post": {
-        "summary": "Cadastro de usuario",
+        "summary": "Cadastro de clientes",
         "descripton": "Rota responsavel por cadastra um novo usuario",
         "tags": ["users"],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "type": "object",
+                "properties": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "example": {
+                  "name": "Cliente 1",
+                  "email": "cliente1@example.com",
+                  "isActive": true,
+                  "phone": "(19) 99999-9999",
+                  "revenue": 1000000,
+                  "agreedTerms": true
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "descripton": "Criado com susseso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "typo": "object",
+                  "properties": {
+                    "message": {
+                      "typo": "string"
+                    }
+                  },
+                  "example": {
+                    "message": "Criado com susseso"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Lista CLientes",
+        "descripton": "Lista todos os cliente",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "Array",
+                  "properties": {
+                    "$ref": "#/components/schemas/User"
+                  },
+                  "example": [
+                    {
+                    "name": "Cliente 1",
+                    "email": "cliente1@example.com",
+                    "isActive": true,
+                    "phone": "(19) 99999-9999",
+                    "revenue": 1000000,
+                    "agreedTerms": true
+                    },
+                    {
+                    "name": "Cliente 2",
+                    "email": "cliente2@example.com",
+                    "isActive": true,
+                    "phone": "(19) 99999-9999",
+                    "revenue": 550000,
+                    "agreedTerms": false
+                    }
+                  ]
+                }
               }
             }
           }
@@ -33,7 +104,6 @@
     }
   },
   "components": {
-    "schemas": {
       "User": {
         "type": "object",
         "properties": {
@@ -62,4 +132,4 @@
       }
     }
   }
-}
+
