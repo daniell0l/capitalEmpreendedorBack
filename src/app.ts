@@ -16,7 +16,7 @@ app.get("/capital", (req, res) => {
       "teste realizado para as rotas de manipulação da capital empreendedor",
   });
 });
-
+ 
 app.use("/v1", router);
 
 export default app;

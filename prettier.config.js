@@ -1,4 +1,5 @@
-export const singleQuote = true;
-export const trailingComma = 'all';
-export const arrowParens = 'avoid';
-export const endOfLine = "auto";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+const singleQuote = true;
+const trailingComma = 'all';
+const arrowParens = 'avoid';
+const endOfLine = "auto";

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { request, response, Router } from "express";
+import { Router } from "express";
+import { v4 as uuid } from "uuid"
 
 const router = Router();
 
@@ -15,18 +16,18 @@ interface UsersDTO {
 
 const users: UsersDTO [] = []
 
-router.get("/users", (request, response) => {
+router.get("/users/findAll", (request, response) => {
   return response.json({ users });
 });
 
-router.get("users/:id", (request, response) => {
+router.get("/users/:id", (request, response) => {
   const { id } = request.params;
   const user = users.find((user) => user.id === id);
   return response.json(user)
 })
 
 router.post("/users", (request, response, next) => {
-  const { name, email, isActive, phone, revenue, agreedTerms, id } = request.body
+  const { name, email, isActive, phone, revenue, agreedTerms } = request.body
 
   const userAlreadyExists = users.find(
     (user) => user.name === name
@@ -43,12 +44,12 @@ router.post("/users", (request, response, next) => {
     phone,
     revenue,
     agreedTerms,
-    id
+    id: uuid()
   };
 
   users.push(user);
 
-  return response.status(201).json({ message: "Created"})
+  return response.json(user)
 });
 
 router.put("/users/:id", (request, response) => {

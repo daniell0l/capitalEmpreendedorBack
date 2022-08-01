@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": " API Capital Empreendedor",
-    "descripton": "api de manipulação",
+    "title": "API Capital Empreendedor",
+    "description": "api de manipulação",
     "termsOfService": "http://localhost:3000/capital",
     "contact": {
       "email": "daniel_l0l@hotmail.com"
@@ -11,90 +11,149 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/v1"
+      "url": "http://localhost:3000/v1",
+      "description": "Api de test"
     }
   ],
   "paths": {
     "/users": {
       "post": {
-        "summary": "Cadastro de clientes",
-        "descripton": "Rota responsavel por cadastra um novo usuario",
+        "summary": "Cadastro de cliente",
+        "description": "cadastra um novo cliente",
         "tags": ["users"],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "$ref": "#/components/schemas/User"
-                },
-                "example": {
-                  "name": "Cliente 1",
-                  "email": "cliente1@example.com",
-                  "isActive": true,
-                  "phone": "(19) 99999-9999",
-                  "revenue": 1000000,
-                  "agreedTerms": true
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "descripton": "Criado com susseso",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "typo": "object",
-                  "properties": {
-                    "message": {
-                      "typo": "string"
-                    }
-                  },
-                  "example": {
-                    "message": "Criado com susseso"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "users"
-        ],
-        "summary": "Lista CLientes",
-        "descripton": "Lista todos os cliente",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "Array",
-                  "properties": {
-                    "$ref": "#/components/schemas/User"
-                  },
-                  "example": [
-                    {
+                "$ref": "#/components/schemas/user"
+              },
+              "examples": {
+                "user": { 
+                  "value": {
                     "name": "Cliente 1",
                     "email": "cliente1@example.com",
                     "isActive": true,
                     "phone": "(19) 99999-9999",
                     "revenue": 1000000,
                     "agreedTerms": true
-                    },
-                    {
-                    "name": "Cliente 2",
-                    "email": "cliente2@example.com",
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "User Already exists!"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/user"
+                }  
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/findAll": {
+      "get": {
+        "description": "listar cliente",
+        "summary": "listar cliente",
+        "tags": ["users"],
+        "parameters": [
+         
+        ],
+        "responses": {
+          "200": {
+          "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "arrey",
+                  "item": {
+                    "$ref": "#/components/schemas/user"      
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "description": "Busca de um cliente pelo id",
+        "summary": "Busca de um cliente pelo id",
+        "tags": ["users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Nome do cliente pelo id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+          "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/user"      
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Alterar o cliente pelo id",
+        "summary": "Alterar um cliente pelo id",
+        "tags": ["users"],
+        
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Nome do cliente para pelo id",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/user"
+              },
+              "examples": {
+                "user": { 
+                  "value": {
+                    "name": "Cliente 1",
+                    "email": "cliente1@example.com",
                     "isActive": true,
                     "phone": "(19) 99999-9999",
-                    "revenue": 550000,
-                    "agreedTerms": false
-                    }
-                  ]
+                    "revenue": 1000000,
+                    "agreedTerms": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok",  
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/user"         
                 }
               }
             }
@@ -104,7 +163,8 @@
     }
   },
   "components": {
-      "User": {
+    "schemas": {
+      "user": {
         "type": "object",
         "properties": {
           "name": {
@@ -129,7 +189,7 @@
             "type": "string"
           }
         }
-      }
+      } 
     }
   }
-
+}
