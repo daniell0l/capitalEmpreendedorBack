@@ -76,4 +76,10 @@ router.put("/users/:id", (request, response) => {
   return response.json(user)
 });
 
+router.delete("/users/:id", (request, response) => {
+  
+});
+
+
+
 export default router;
