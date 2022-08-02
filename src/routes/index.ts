@@ -15,7 +15,7 @@ interface UsersDTO {
 
 const users: UsersDTO [] = []
 
-router.get("/users", (request, response) => {
+router.get("/users/findAll", (request, response) => {
   return response.json({ users });
 });
 
@@ -75,6 +75,7 @@ router.put("/users/:id", (request, response) => {
   return response.json(user)
 
 });
+
 router.delete("/users/:id", (request, response) => {
   const { id } = request.params;
   const { name, email, isActive, phone, revenue, agreedTerms } = request.body;
@@ -98,7 +99,5 @@ router.delete("/users/:id", (request, response) => {
 
   return response.json(user)
 });
-
-
 
 export default router;
