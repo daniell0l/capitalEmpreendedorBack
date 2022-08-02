@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Router } from "express";
 import { v4 as uuid } from "uuid"
 
@@ -16,7 +15,7 @@ interface UsersDTO {
 
 const users: UsersDTO [] = []
 
-router.get("/users/findAll", (request, response) => {
+router.get("/users", (request, response) => {
   return response.json({ users });
 });
 
@@ -74,10 +73,30 @@ router.put("/users/:id", (request, response) => {
   users[userIndex] = user
 
   return response.json(user)
-});
 
+});
 router.delete("/users/:id", (request, response) => {
-  
+  const { id } = request.params;
+  const { name, email, isActive, phone, revenue, agreedTerms } = request.body;
+
+  const userIndex = users.findIndex((user) => user.id === id);
+
+  if(userIndex === -1) {
+    return response.status(400).json({ message: "User does not exists" });
+  }
+
+  const user: UsersDTO = Object.assign({
+    name,
+    email,
+    isActive,
+    phone,
+    revenue,
+    agreedTerms
+  });
+
+  users[userIndex] = user
+
+  return response.json(user)
 });
 
 
