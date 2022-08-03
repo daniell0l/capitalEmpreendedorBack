@@ -47,7 +47,7 @@
 6 - Deixei uma copia do arquivo do insomnia dentro da docs:
 
 ```bash
-Abra o insomnia, configurações, data, import data, from file e em seguida procure a pasta docs dentro e selecione o arquivo do insomnia
+Abra o insomnia, configurações, data, import data, from file e em seguida procure a pasta docs dentro do projeto e selecione o arquivo do insomnia
 ```
 
 7 - Para criar, busca, atualizar ou deleta, utilize as rota
