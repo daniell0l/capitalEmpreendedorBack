@@ -118,15 +118,13 @@
       "opportunities": []
     },
     "daniel@example.com": {
-      "opportunities": [
-        {
-          "name": "string",
-          "limit": 1,
-          "interest": 1,
-          "term": 1,
-          "isActive": true
-        }
-      ]
+      "opportunities": {
+        "name": "string",
+        "limit": 5,
+        "interest": 210,
+        "term": 10000,
+        "isActive": false
+      }
     }
   }
 }

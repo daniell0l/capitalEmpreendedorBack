@@ -77,6 +77,20 @@ router.delete("/users/:email", async (request: Request, response: Response) => {
   return response.status(201).json(result)
 });
 
+router.get("/opportunities",  async (request: Request, response: Response) => {
+  const result = await functions.getAll("opportunities")
+  return response.json(result)
+}); 
+
+router.get("/opportunities/:email", async (request: Request, response: Response) => {
+  const { email } = request.params;
+
+  if(!email) return response.status(400).json({message: "Email is required!"})
+
+  const result = await functions.getOne("opportunities", email)
+  return response.json(result)
+})
+
 router.post("/opportunities", async (request: Request, response: Response) => {
   const opportunity: NewOpportunity = request.body
   const email = opportunity.email
@@ -94,7 +108,24 @@ router.post("/opportunities", async (request: Request, response: Response) => {
   return response.status(201).json(result)
 });
 
+router.put("/opportunities/:email", async (request: Request, response: Response) => {
+  const opportunities: NewOpportunity = request.body 
+  const { email } = request.params;
 
+  const result = await functions.update("opportunities",  email, {opportunities})
 
+  return response.status(201).json(result)
+
+});
+
+router.delete("/opportunities/:email", async (request: Request, response: Response) => {
+  const { email } = request.params;
+
+  if(!email) return response.status(400).json({message: "Email is required!"})
+
+  const result = await functions.delete("opportunities", email)
+
+  return response.status(201).json(result)
+});
 
 export default router;
