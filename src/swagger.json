@@ -12,7 +12,12 @@
   "servers": [
     {
       "url": "http://localhost:3000/users",
-      "description": "Api de test"
+      "description": "Api dos clientes"
+    },
+
+    {
+      "url": "http://localhost:3000/opportunities",
+      "description": "Api das oportunidades"
     }
   ],
   "paths": {

@@ -1,103 +1,100 @@
-import { Router } from "express";
-import { v4 as uuid } from "uuid"
+import { Router, Request, Response} from "express";
+import functions from "../../database/functions";
 
 const router = Router();
 
-interface UsersDTO {
+interface User {
   name: string;
   email: string;
   isActive: boolean;
   phone: string;
   revenue: number;
   agreedTerms: boolean;
-  id: string;
 }
 
-const users: UsersDTO [] = []
+interface Opportunity {
+  name: string;
+  limit: number;
+  interest: number;
+  term: number;
+  isActive: boolean;
+}
 
-router.get("/users/findAll", (request, response) => {
-  return response.json({ users });
-});
+interface NewOpportunity {
+  email: string;
+  opportunities: Opportunity[]
+}
 
-router.get("/users/:id", (request, response) => {
-  const { id } = request.params;
-  const user = users.find((user) => user.id === id);
-  return response.json(user)
+
+router.get("/users",  async (request: Request, response: Response) => {
+  const result = await functions.getAll("users")
+  return response.json(result)
+}); 
+
+
+router.get("/users/:email", async (request: Request, response: Response) => {
+  const { email } = request.params;
+
+  if(!email) return response.status(400).json({message: "Email is required!"})
+
+  const result = await functions.getOne("users", email)
+  return response.json(result)
 })
 
-router.post("/users", (request, response, next) => {
-  const { name, email, isActive, phone, revenue, agreedTerms } = request.body
+router.post("/users", async (request: Request, response: Response) => {
+  const user: User = request.body
 
-  const userAlreadyExists = users.find(
-    (user) => user.name === name
-  );
+  const userAlreadyExists = await functions.getOne("users", user.email)
 
   if(userAlreadyExists) {
-    return response.status(400).json({ message: "User already exists" });
+    return response.status(400).json({ message: "User already exists!" });
   }
 
-  const user = {
-    name,
-    email,
-    isActive,
-    phone,
-    revenue,
-    agreedTerms,
-    id: uuid()
-  };
+  const result = await functions.set("users", user.email, user)
 
-  users.push(user);
-
-  return response.json(user)
+  return response.status(201).json(result)
 });
 
-router.put("/users/:id", (request, response) => {
-  const { id } = request.params;
-  const { name, email, isActive, phone, revenue, agreedTerms } = request.body;
+router.put("/users/:email", async(request: Request, response: Response) => {
+  const { email } = request.params;
+  const user: User = request.body
 
-  const userIndex = users.findIndex((user) => user.id === id);
+  if(!email) return response.status(400).json({message: "Email is required!"})
 
-  if(userIndex === -1) {
-    return response.status(400).json({ message: "User does not exists" });
-  }
+  const result = await functions.update("users", email, user)
 
-  const user: UsersDTO = Object.assign({
-    name,
-    email,
-    isActive,
-    phone,
-    revenue,
-    agreedTerms
-  });
-
-  users[userIndex] = user
-
-  return response.json(user)
+  return response.status(201).json(result)
 
 });
 
-router.delete("/users/:id", (request, response) => {
-  const { id } = request.params;
-  const { name, email, isActive, phone, revenue, agreedTerms } = request.body;
+router.delete("/users/:email", async (request: Request, response: Response) => {
+  const { email } = request.params;
 
-  const userIndex = users.findIndex((user) => user.id === id);
+  if(!email) return response.status(400).json({message: "Email is required!"})
 
-  if(userIndex === -1) {
-    return response.status(400).json({ message: "User does not exists" });
-  }
+  const result = await functions.delete("users", email)
 
-  const user: UsersDTO = Object.assign({
-    name,
-    email,
-    isActive,
-    phone,
-    revenue,
-    agreedTerms
-  });
-
-  users[userIndex] = user
-
-  return response.json(user)
+  return response.status(201).json(result)
 });
+
+router.post("/opportunities", async (request: Request, response: Response) => {
+  const opportunity: NewOpportunity = request.body
+  const email = opportunity.email
+
+  delete opportunity.email
+
+  const userExists = await functions.getOne("users", email)
+
+  if(!userExists) {
+    return response.status(400).json({ message: "User not exists" });
+  }
+  
+  const result = await functions.set("opportunities", email, opportunity)
+
+  return response.status(201).json(result)
+});
+
+
+
 
 export default router;

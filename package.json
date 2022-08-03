@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./src/bin/www.ts",
+    "dev": "ts-node-dev ./src/bin/www.ts",
     "build": "tsc"
   },
   "dependencies": {

@@ -39,6 +39,14 @@
       "phone": "(19) 99999-4444",
       "revenue": 350000,
       "agreedTerms": false
+    },
+    "daniel@example.com": {
+      "name": "Daniel02",
+      "email": "daniel2@example.com",
+      "isActive": true,
+      "phone": "(19) 99999-8888",
+      "revenue": 5000000,
+      "agreedTerms": false
     }
   },
   "opportunities": {
@@ -108,6 +116,17 @@
     },
     "cliente5@example.com": {
       "opportunities": []
+    },
+    "daniel@example.com": {
+      "opportunities": [
+        {
+          "name": "string",
+          "limit": 1,
+          "interest": 1,
+          "term": 1,
+          "isActive": true
+        }
+      ]
     }
   }
 }

@@ -17,6 +17,6 @@ app.get("/capital", (req, res) => {
   });
 });
 
-app.use("/users", router);
+app.use(router);
 
 export default app;
