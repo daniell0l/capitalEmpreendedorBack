@@ -1,6 +1,22 @@
 # CE Test - Web Server
 
-# como utilizar
+
+#  🚀 Minhas alterações
+
+- Back-end:
+  - Adicionei o Eslint e Prettier e o editorconfig
+  - Adicionei um a pasta src e passei as pasta bin, public, routes e o arquivo app para dentro
+  - Mudei as extensões dos arquivos de JS para TS
+  - Adicionei o swagger para documentar a API
+
+  # 🛸 Tecnologias
+
+* NodeJs
+
+* Express
+
+* Typescript
+# ⚙️ como utilizar
 
 1 - Clonar o repositório:
 
@@ -17,7 +33,7 @@
 3 - Rode a aplicação no ambiente que desejar:
 
 ```bash
-npm start ou npm dev ou yarn start ou yarn dev
+`npm start` `npm dev` ou `yarn start` `yarn dev`
 ```
 
 4 -  Acesse a aplicação no seu navegador em
@@ -27,6 +43,10 @@ npm start ou npm dev ou yarn start ou yarn dev
 5 - Para manipular os arquivos, utilize uma das ferramentas 
 * `insomnia`
 * `postman`
+
+6 - Para criar, busca, atualizar ou deleta, utilize as rota
+* `http://localhost:3000/user`
+* `http://localhost:3000/opportunities`
 
     
 
