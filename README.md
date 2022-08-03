@@ -5,19 +5,19 @@
 1 - Clonar o repositório:
 
 ```bash
- `https://github.com/daniell0l/capitalEmpreendedorBack.git`
+ https://github.com/daniell0l/capitalEmpreendedorBack.git
 ```
 
 2 - instale as dependências:
 
 ```bash
- `npm ci` ou `yarn`
+ npm ci ou yarn
  ```
 
 3 - Rode a aplicação no ambiente que desejar:
 
 ```bash
-* `npm start ou npm dev` * `yarn start ou yarn dev`
+npm start ou npm dev ou yarn start ou yarn dev
 ```
 
 4 -  Acesse a aplicação no seu navegador em
