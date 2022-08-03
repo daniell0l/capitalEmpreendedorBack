@@ -11,7 +11,7 @@
 2 - instale as dependências:
 
 ```bash
- npm ci ou yarn
+ npm ou yarn
  ```
 
 3 - Rode a aplicação no ambiente que desejar:
