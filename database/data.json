@@ -119,7 +119,7 @@
     },
     "daniel@example.com": {
       "opportunities": {
-        "name": "string",
+        "name": "daniel",
         "limit": 5,
         "interest": 210,
         "term": 10000,
