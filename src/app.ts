@@ -18,6 +18,6 @@ app.get("/TermsCapital", (req, res) => {
   });
 });
 
-app.use("/v1", router);
+app.use(router);
 
 export default app;
