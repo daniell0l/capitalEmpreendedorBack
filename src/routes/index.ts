@@ -26,7 +26,7 @@ interface NewOpportunity {
 }
 
 
-router.get("/users",  async (request: Request, response: Response) => {
+router.get("/users/all",  async (request: Request, response: Response) => {
   const result = await functions.getAll("users")
   return response.json(result)
 }); 
