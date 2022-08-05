@@ -3,7 +3,7 @@
   "info": {
     "title": "API Capital Empreendedor",
     "description": "api de manipulação",
-    "termsOfService": "http://localhost:3001/TermsCapital",
+    "termsOfService": "http://localhost:3000/TermsCapital",
     "contact": {
       "email": "daniel_l0l@hotmail.com"
     },
@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3001/v1",
+      "url": "http://localhost:3000/v1",
       "description": "Api dos clientes"
     }
   ],
