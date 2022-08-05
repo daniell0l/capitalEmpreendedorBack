@@ -54,5 +54,7 @@ Abra o insomnia, configurações, data, import data, from file e em seguida proc
 * `http://localhost:3000/user`
 * `http://localhost:3000/opportunities`
 
+8 - Caso queria manipular os arquivos pelo swagger, utilize em seu navegador a rota:
+* `http://localhost:3000/docs`
     
 
