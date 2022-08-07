@@ -87,8 +87,16 @@ router.get("/opportunities/:email", async (request: Request, response: Response)
 
   if(!email) return response.status(400).json({message: "Email is required!"})
 
-  const result = await functions.getOne("opportunities", email)
-  return response.json(result)
+  let result;
+  try {
+     result = await functions.getOne("opportunities", email)
+
+  } catch (error) {
+     result = await functions.set("opportunities", email, [])
+  }
+  console.log(email);
+  
+  return response.json(result?.opportunities)
 })
 
 router.post("/opportunities", async (request: Request, response: Response) => {

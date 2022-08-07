@@ -31,8 +31,11 @@ functions.getOne = (collection, key) => {
     } else {
       try {
         var data = JSON.parse(fs.readFileSync(databaseFile));
+        console.log(data);
         if(data[collection]){
+          console.log(123);
           if(data[collection][key]) {
+            console.log(1235);
             resolve(data[collection][key]);
           } else {
             resolve(undefined);

@@ -1,25 +1,9 @@
 {
   "users": {
-    "cliente1@example.com": {
-      "name": "Cliente 1",
-      "email": "cliente1@example.com",
-      "isActive": true,
-      "phone": "(19) 99999-9999",
-      "revenue": 1000000,
-      "agreedTerms": true
-    },
-    "cliente2@example.com": {
-      "name": "Cliente 2",
-      "email": "cliente2@example.com",
-      "isActive": true,
-      "phone": "(19) 91111-1111",
-      "revenue": 550000,
-      "agreedTerms": false
-    },
     "cliente3@example.com": {
       "name": "Cliente 3",
       "email": "cliente3@example.com",
-      "isActive": true,
+      "isActive": false,
       "phone": "(11) 92222-2222",
       "revenue": 150000,
       "agreedTerms": true
@@ -28,25 +12,17 @@
       "name": "Cliente 4",
       "email": "cliente4@example.com",
       "isActive": false,
-      "phone": "(19) 99999-3333",
+      "phone": "(19) 99999-5555",
       "revenue": 10000000,
       "agreedTerms": true
     },
-    "cliente5@example.com": {
-      "name": "Cliente 5",
-      "email": "cliente5@example.com",
+    "daniel_l0l@hotmail.com": {
+      "name": "Daniel Medrado Fernandes",
+      "email": "daniel_l0l@hotmail.com",
       "isActive": true,
-      "phone": "(19) 99999-4444",
-      "revenue": 350000,
-      "agreedTerms": false
-    },
-    "daniel@example.com": {
-      "name": "Daniel02",
-      "email": "daniel2@example.com",
-      "isActive": true,
-      "phone": "(19) 99999-8888",
-      "revenue": 5000000,
-      "agreedTerms": false
+      "phone": "+5577997009088",
+      "revenue": "12345654",
+      "agreedTerms": true
     }
   },
   "opportunities": {
@@ -57,7 +33,7 @@
           "limit": 50000,
           "interest": 0.045,
           "term": 60,
-          "isActive": true
+          "isActive": false
         },
         {
           "name": "Instituição 3",
