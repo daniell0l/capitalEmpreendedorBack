@@ -52,6 +52,10 @@ router.post("/users", async (request: Request, response: Response) => {
 
   const result = await functions.set("users", user.email, user)
 
+  await functions.set("opportunities", user.email, {
+    opportunities: []
+  })
+
   return response.status(201).json(result)
 });
 
@@ -74,6 +78,8 @@ router.delete("/users/:email", async (request: Request, response: Response) => {
 
   const result = await functions.delete("users", email)
 
+  await functions.delete("opportunities", email)
+
   return response.status(201).json(result)
 });
 
@@ -93,9 +99,7 @@ router.get("/opportunities/:email", async (request: Request, response: Response)
 
   } catch (error) {
      result = await functions.set("opportunities", email, [])
-  }
-  console.log(email);
-  
+  }  
   return response.json(result?.opportunities)
 })
 
@@ -117,10 +121,12 @@ router.post("/opportunities", async (request: Request, response: Response) => {
 });
 
 router.put("/opportunities/:email", async (request: Request, response: Response) => {
-  const opportunities: NewOpportunity = request.body 
+  const opportunities: Opportunity[] = request.body 
   const { email } = request.params;
 
   const result = await functions.update("opportunities",  email, {opportunities})
+  console.log(result);
+  
 
   return response.status(201).json(result)
 
